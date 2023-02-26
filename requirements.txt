@@ -1,0 +1,9 @@
+pandas
+streamlit
+pymongo
+git+https://github.com/JustAnotherArchivist/snscrape.git
+boto3
+botocore
+pandas
+streamlit
+ 
