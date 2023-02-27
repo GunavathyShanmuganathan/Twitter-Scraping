@@ -54,10 +54,10 @@ if not tweets_df.empty:
     col1, col2, col3 = st.columns(3)
     with col1:
         csv = convert_df(tweets_df) 
-        c=st.download_button(label="Download data as CSV",data=csv,file_name='Paleo.tweets.csv',mime='text/csv',)        
+        c=st.download_button(label="Download data as CSV",data=csv,file_name='tweets_df.csv',mime='text/csv',)        
     with col2:   
         json_string = tweets_df.to_json(orient ='records')
-        j=st.download_button(label="Download data as JSON",file_name="Paleo.tweets.json",mime="application/json",data=json_string,)
+        j=st.download_button(label="Download data as JSON",file_name="tweets_df.json",mime="application/json",data=json_string,)
 
     
     if st.button('Upload Tweets to Database'):
