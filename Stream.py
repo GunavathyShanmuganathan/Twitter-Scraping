@@ -15,7 +15,7 @@ db = client.Twitter
 records=db.scraping
 tweets_df = pd.DataFrame()
 dfm = pd.DataFrame()
-st.write("# Welcome to Twitter scraping")
+st.write("# Welcome to Twitter scraping:speech_balloon:")
 option = st.selectbox('How would you like the data to be searched?',('Keyword', 'Hashtag'))
 word = st.text_input('Please enter a '+option, 'Example:Paleo')
 word = st.text_input('Please enter a '+option, 'Paleo')
@@ -70,7 +70,7 @@ if not tweets_df.empty:
             ts = time.time()
             mycoll.update_many({}, {"$set": {"KeyWord_or_Hashtag": word+str(ts)}}, upsert=False, array_filters=None)
             st.success('Successfully uploaded to database', icon="✅")
-            st.balloons()
+            st.snow()
         else:
             st.warning('Cant upload because there are no tweets', icon="⚠️")
     with col3: 
@@ -95,7 +95,7 @@ if x:
     st.success("The Scraped Data is:",icon="✅")
     st.write(tweets_df)
 if y: 
-    st.balloons()
+    st.snow()
     st.success("Tweets Scraped Successfully:",icon="✅")
     st.write(tweets_df)
 
@@ -103,14 +103,6 @@ if not dfm.empty:
     st.write( len(dfm),'Records Found')
     st.write(dfm) 
 
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 
