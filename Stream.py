@@ -72,14 +72,14 @@ if not tweets_df.empty:
         coll=coll.replace(' ','_')+'_Tweets'
         mycoll=db[coll]
         dict=tweets_df.to_dict('records')
-     if dict:
-        mycoll.insert_many(dict) 
-        ts = time.time()
-        mycoll.update_many({}, {"$set": {"KeyWord_or_Hashtag": word+str(ts)}}, upsert=False, array_filters=None)
-        st.success('Successfully uploaded to database', icon="✅")
-        st.snow()
-     else:
-        st.warning('Cant upload because there are no tweets', icon="⚠️")
+        if dict:
+         mycoll.insert_many(dict) 
+         ts = time.time()
+         mycoll.update_many({}, {"$set": {"KeyWord_or_Hashtag": word+str(ts)}}, upsert=False, array_filters=None)
+         st.success('Successfully uploaded to database', icon="✅")
+         st.snow()
+        else:
+         st.warning('Cant upload because there are no tweets', icon="⚠️")
 
 with st.sidebar:   
     st.write('Uploaded Datasets: ')
