@@ -34,6 +34,15 @@ if word:
         tweets_df = pd.DataFrame(tweets_list, columns=['ID','Date','Content', 'Language', 'Username', 'ReplyCount', 'RetweetCount', 'LikeCount','Source', 'Url'])
     else:
         st.warning(option,' cant be empty', icon="⚠️")
+    if option=='Hashtag':
+        for i,tweet in enumerate(sntwitter.TwitterSearchScraper(f'{word} + since:{start} until:{end}').get_items()):
+            if i>tweet_c:
+                if i>tweet_c-1:
+                    break
+            tweets_list.append([ tweet.id, tweet.date,  tweet.content, tweet.lang, tweet.user.username, tweet.replyCount, tweet.retweetCount,tweet.likeCount, tweet.source, tweet.url ])
+        tweets_df = pd.DataFrame(tweets_list, columns=['ID','Date','Content', 'Language', 'Username', 'ReplyCount', 'RetweetCount', 'LikeCount','Source', 'Url'])
+    else:
+        st.warning(option,' cant be empty', icon="⚠️")
 
 with st.sidebar:   
     st.info('DETAILS', icon="ℹ️")
