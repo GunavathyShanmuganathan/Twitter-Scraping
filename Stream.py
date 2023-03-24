@@ -39,7 +39,9 @@ if word:
                     break
             tweets_list.append([ tweet.id, tweet.date,  tweet.content, tweet.lang, tweet.user.username, tweet.replyCount, tweet.retweetCount,tweet.likeCount, tweet.source, tweet.url ])
         tweets_df = pd.DataFrame(tweets_list, columns=['ID','Date','Content', 'Language', 'Username', 'ReplyCount', 'RetweetCount', 'LikeCount','Source', 'Url']
-
+    else:
+        st.warning(option,'cant be empty')                       
+                                 
 with st.sidebar:   
     st.info('DETAILS', icon="ℹ️")
     if option=='Keyword':
