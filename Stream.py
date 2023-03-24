@@ -58,7 +58,7 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 if not tweets_df.empty:
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         csv = convert_df(tweets_df) 
         c=st.download_button(label="Download data as CSV",data=csv,file_name='tweets_df.csv',mime='text/csv',)        
@@ -80,13 +80,6 @@ if not tweets_df.empty:
             st.snow()
         else:
             st.warning('Cant upload because there are no tweets', icon="⚠️")
-    with col3: 
-        y=st.button('Show Tweets',key=2)
-
-    
-    if st.button('Show Tweets'):
-        st.write(tweets_df)
-
 
 with st.sidebar:   
     st.write('Uploaded Datasets: ')
