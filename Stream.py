@@ -16,7 +16,7 @@ records=db.scraping
 tweets_df = pd.DataFrame()
 dfm = pd.DataFrame()
 st.write("# Welcome to Twitter scraping:speech_balloon:")
-option = st.selectbox('How would you like the data to be searched?',(' ', 'Keyword', 'Hashtag'))
+option = st.selectbox('How would you like the data to be searched?',('Keyword', 'Hashtag'))
 word = st.text_input('Please enter a '+option, 'Example:Paleo')
 word = st.text_input('Please enter a '+option, 'Paleo')
 start = st.date_input("Select the start date", datetime.date(2022, 1, 1),key='d1')
@@ -38,9 +38,7 @@ if word:
                 if i>tweet_c-1:
                     break
             tweets_list.append([ tweet.id, tweet.date,  tweet.content, tweet.lang, tweet.user.username, tweet.replyCount, tweet.retweetCount,tweet.likeCount, tweet.source, tweet.url ])
-        tweets_df = pd.DataFrame(tweets_list, columns=['ID','Date','Content', 'Language', 'Username', 'ReplyCount', 'RetweetCount', 'LikeCount','Source', 'Url'])
-    elif option==' ':
-        st.warning(option,' cant be empty', icon="⚠️")
+        tweets_df = pd.DataFrame(tweets_list, columns=['ID','Date','Content', 'Language', 'Username', 'ReplyCount', 'RetweetCount', 'LikeCount','Source', 'Url']
 
 with st.sidebar:   
     st.info('DETAILS', icon="ℹ️")
