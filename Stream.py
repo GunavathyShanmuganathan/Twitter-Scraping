@@ -58,7 +58,7 @@ def convert_df(df):
     return df.to_csv().encode('utf-8')
 
 if not tweets_df.empty:
-    col1, col2 = st.columns(2)
+    col1, col2,col3 = st.columns(3)
     with col1:
         csv = convert_df(tweets_df) 
         c=st.download_button(label="Download data as CSV",data=csv,file_name='tweets_df.csv',mime='text/csv',)        
@@ -66,19 +66,19 @@ if not tweets_df.empty:
         json_string = tweets_df.to_json(orient ='records')
         j=st.download_button(label="Download data as JSON",file_name="tweets_df.json",mime="application/json",data=json_string,)
 
-    
-    if st.button('Upload Tweets to Database'):
+    with col3:
+     if st.button('Upload Tweets to Database'):
         coll=word
         coll=coll.replace(' ','_')+'_Tweets'
         mycoll=db[coll]
         dict=tweets_df.to_dict('records')
-        if dict:
+     if dict:
             mycoll.insert_many(dict) 
             ts = time.time()
             mycoll.update_many({}, {"$set": {"KeyWord_or_Hashtag": word+str(ts)}}, upsert=False, array_filters=None)
             st.success('Successfully uploaded to database', icon="✅")
             st.snow()
-        else:
+     else:
             st.warning('Cant upload because there are no tweets', icon="⚠️")
 
 with st.sidebar:   
