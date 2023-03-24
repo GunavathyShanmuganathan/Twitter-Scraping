@@ -39,7 +39,7 @@ if word:
                     break
             tweets_list.append([ tweet.id, tweet.date,  tweet.content, tweet.lang, tweet.user.username, tweet.replyCount, tweet.retweetCount,tweet.likeCount, tweet.source, tweet.url ])
         tweets_df = pd.DataFrame(tweets_list, columns=['ID','Date','Content', 'Language', 'Username', 'ReplyCount', 'RetweetCount', 'LikeCount','Source', 'Url'])
-    else:
+    elif text_input==' ':
         st.warning(option,' cant be empty', icon="⚠️")
 
 with st.sidebar:   
