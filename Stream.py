@@ -94,11 +94,6 @@ if j:
 if x: 
     st.success("The Scraped Data is:",icon="✅")
     st.write(tweets_df)
-if y: 
-    st.snow()
-    st.success("Tweets Scraped Successfully:",icon="✅")
-    st.write(tweets_df)
-
 if not dfm.empty: 
     st.write( len(dfm),'Records Found')
     st.write(dfm) 
